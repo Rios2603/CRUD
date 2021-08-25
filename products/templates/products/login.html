@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <style type="text/css">
+        body {
+                width: 100%;
+                height: 100vh;
+                background-image: url("https://i.pinimg.com/originals/c5/8f/f4/c58ff400f1211f36c8808c55eb9d2bcd.jpg");
+                background-position: center;
+                background-attachment: fixed;
+                background-size: cover;
+                font-family: Times;
+            }
+            .formulario{
+                border: 1px solid black;
+                    width: 370px;
+                    height: 455px;
+                    position: relative;
+                    margin: 6% auto;
+                    background: white;
+                    padding: 5px;
+                    border-radius: 20px;
+                    overflow: hidden;
+            }
+            .boton_de_caja{
+                    width: 240px;
+                    margin: 30px auto;
+                    position: relative;
+                    box-shadow: 0 0 20px 9px white;
+                    border-radius:30px;
+            }
+            .presionar-boton{
+                    padding: 10px 22px;
+                    cursor: pointer;
+                    background: transparent;
+                    border: 0px;
+                    outline: none;
+                    position: relative;
+            }
+            #elegir{
+                    top: 0;
+                    left: 0;
+                    position: absolute;
+                    width: 120px;
+                    height: 100%;
+                    background:linear-gradient(to right, #ff3333, #ff3333);
+                    border-radius: 30px;
+                    transition: 0.8s;
+
+            }
+            .redes-sociales{
+	margin: 30px;
+	text-align: center;
+}
+
+.redes-sociales img{
+	width: 30px;
+	margin: 0 12px;
+	
+}
+
+.inputs{
+	top: 180px;
+	position: absolute;
+	width: 280px;
+	transition: 0.8s;
+}
+
+.inputs2{
+	width: 100%;
+	padding: 10px 0;
+	margin: 5px 0;
+	border-left: 0;
+	border-top: 0;
+	border-right: 0;
+	border-bottom: 2px solid #ff3333;
+	outline: none;
+	background: transparent;
+}
+
+.submit-btn{
+	width: 85%;
+	padding: 10px 30px;
+	cursor: pointer;
+	display: block;
+    margin: auto;
+    background: #ff3333;
+	border: 0px;
+	outline: none;
+	border-radius: 30px;
+}
+
+.check-box{
+	margin: 30px 10px 30px 0;
+}
+
+span{
+   color: #ff3333;
+   font-size: 12px;
+   bottom: 64px;
+   position: absolute;
+}
+
+#login{
+	left: 50px;
+}
+
+#registrar{
+	left: 450px;
+}
+    </style>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>{% block title %} {% endblock %}</title>
+        <link href="estilos_index.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div class="formulario">
+                <div class="boton_de_caja">
+                    <div id="elegir"></div>
+                    <button type="button" class="presionar-boton" onclick="login()">Iniciar Sesion</button>
+                    <button type="button" class="presionar-boton" onclick="registrar()">Registrar</button>
+                </div>
+                <div class="redes-sociales">
+                    <p>Bienvenido a CRUD Django, para comenzar por favor inicie sesión o registrese</p>
+                    <a href=""><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" /></a>
+                    <a href=""><img src="http://assets.stickpng.com/images/584856bce0bb315b0f7675ad.png" /></a>
+                    <a href=""><img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png" /></a>
+                </div>
+                <form action="../productos/" method="POST" id="login" class="inputs"> 
+                    {% csrf_token %}
+                    <input type="text" class="inputs2" name="txtusuario" placeholder="Nombre de Usuario" required>
+                    <input type="password" class="inputs2" name="txtpassword" placeholder="Contraseña" required>
+                    <input type="checkbox" class="check-box"><span>Recordar Contraseña</span>
+                    <input type="submit" class="submit-btn" value="Acceder">
+                </form>
+                <form action="../productos/" method="POST" id="registrar" class="inputs">
+                    {% csrf_token %}
+                    <input type="text" class="inputs2" name="txtusuario" placeholder="Nombre de Usuario" required>
+                    <input type="email" class="inputs2" name="txtcorreo" placeholder="correo" required>
+                    <input type="password" class="inputs2" name="txtpassword" placeholder="Contraseña" required>
+                    <input type="checkbox" class="check-box" required=""><span>Acepto los terminos </span>
+                    <input type="submit" class="submit-btn" value="Registrar">
+                </form>
+            </div>
+        <script>
+        var x = document.getElementById("login");
+        var y = document.getElementById("registrar"); 
+        var z = document.getElementById("elegir");
+
+        function login(){
+            x.style.left = "50px";
+            y.style.left = "450px";
+            z.style.left = "0px";
+        }
+        function registrar(){
+            x.style.left = "-400px";
+            y.style.left = "50px";
+            z.style.left = "120px";
+        }
+        
+    </script>
+    </body>
+</html>
